@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+
+
+{% block body %} 
+    <p class="content">
+       
+      &emsp;&emsp;&emsp;&emsp;  Library System Management is CRUD operation platform. The given platform is for admin use only.</br>
+       &emsp;&emsp;&emsp;&emsp;  Below given are some guidelines as to how to use the system.</br>
+       &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-&emsp;Book List: It consists of List of books along with operation buttons.Create Button is to create new book. Import From Frappe is to import books from api. Also update 
+       &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;and delete button button to update stock and delete if book is no longer required.</br></br>
+       &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-&emsp;Member List: consists of list of members where there are buttons to add, update, delete and search the member data is provided.</br></br>
+       &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-&emsp;Transactions consists of list of all the books issued to the member along with their username and date of issue , expected date of return , date of return and fine. </br></br>
+       &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-&emsp;Search Books provides feature of searching book by author as well as book title any one of them can be used simultaneously according to the user needs.</br></br>
+       &emsp;&emsp;&emsp;&emsp; How to use the System? </br>
+   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-&emsp;Step 1 : Whenever a member wants to issue a book Firstly search for a particular member in the member List also search for a required Book.</br>
+   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;If member and Book exist  -> First Search for member's username in the transaction section see if the member fine is not more than 500 .Issue the book from </br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;issue option on the home page.</br>
+   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;After Issuing the book Decrease the book stock number by 1 in the Book List.</br>
+   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Else if member or book doesn't exist -> Create new record and then issue the book.</br>
+   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-&emsp;Step 2 : Transaction is important section check for the usernames whose date of book return is more than the expected date fine should be increased by 5 rupees </br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; everyday. If member pays the amount add the data in member List's total pay section of particular member name.</br>
+   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-&emsp;Step 3 : If member wants to return the book . Add the data in return section from home page and increase the returned book stock by 1 . 
+      
+    </p>
+{% endblock %}
+

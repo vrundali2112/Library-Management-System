@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% block body %}
+   
+        {% include 'books/create_book_modal.html' %}
+        {% include 'import-books-frappe.html' %}
+    	<button type="button" class="btn btn-outline-light operation" data-bs-toggle="modal" data-bs-target="#bookModal">Create</button>
+        
+        <button type="button" class="btn btn-outline-light operation" data-bs-toggle="modal" data-bs-target="#importFrModal">
+             Import From Frappe
+        </button>
+
+
+
+        <div class="jinjo">
+
+        {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+
+        {% endif %}
+
+        {% endwith %}
+    </div>
+
+	<table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col" class="table-id">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+            	{% for book in books %}
+                    {% include 'books/update_book_modal.html' %}
+                    {% include 'books/delete_book_modal.html' %}
+                
+                    <tr>
+                        <th scope="row" class="table-id"> 
+                        {{ book.id }}</th>
+                        <td class="content">{{ book.title }}</td>
+                        <td class="content">{{ book.isbn }}</td>
+                        <td class="content">{{ book.author }}</td>
+                        <td class="content">{{ book.stock }}</td>
+                        <td class="action">
+                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#deleteModal-{{book.id}}">Delete</button> 
+
+                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#updateBookModal-{{book.id}}">
+                                Update
+                            </button>
+                          
+                            
+                        </td>
+                    </tr>
+           
+            </tbody>
+            {% endfor %}
+        </table>
+  
+    
+
+
+{% endblock %}

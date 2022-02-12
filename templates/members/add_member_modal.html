@@ -1,0 +1,29 @@
+<div class="modal fade" id="memberModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add new Member</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="insert_mem" method="POST">
+                	<div class="form-group">
+                		<label>Name:</label>
+                		<input type="text" class="form-control" name="name" required="1">
+                	</div>
+                	<div class="form-group">
+                		<label>Username:</label>
+                		<input type="text" class="form-control" name="member_name" required="1">
+                	</div>
+                	<div class="form-group">
+                		<label>Phone Number:</label>
+                		<input type="text" class="form-control" name="phone_num" required="1">
+                	</div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline-dark">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

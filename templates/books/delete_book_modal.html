@@ -1,0 +1,32 @@
+<style>
+        .modal-header {
+            background: #2a2a2a;
+            color: #fff;
+        }
+        
+    </style>
+
+
+<div class="modal fade" id="deleteModal-{{book.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookModalLabel">Are you sure you want to delete&nbsp;<b>?</b></h5>
+                <button type="button" class="btn-close btn-outline-light" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            	{{book.title}} </br> -by {{book.author}}
+               
+            </div>
+
+            <div class="modal-body">
+                <form action="./delete/{{book.id}}"  method="POST">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-dark">Delete</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

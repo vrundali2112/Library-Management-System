@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+{% include 'books/create_book_modal.html' %}
+{% include 'members/add_member_modal.html' %}
+{% include 'transactions/issue_book_modal.html' %}
+{% include 'transactions/return_book_modal.html' %}
+
+<div class="typewriter">
+  <h1 class="boda">****Welcome to Library Management System****</h1>
+</div>
+
+<div class="container">
+        <div class="row">
+          <div class="col-lg-3 mx-auto">
+            <div class="card" >
+              <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/addbooks.jpeg') }}" height="200">
+              <div class="card-block">
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#bookModal">Add Book</button>
+              </div>
+            </div>
+          </div>
+             <div class="col-lg-3 mx-auto">
+            <div class="card" >
+              <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/addmember.jpeg') }}" height="200">
+              <div class="card-block">
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#memberModal">Add Member</button>
+              </div>
+            </div>
+          </div>
+            <div class="col-lg-3 mx-auto">
+            <div class="card" >
+              <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/borrow.jpeg') }}" height="200">
+              <div class="card-block">
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#issueBookModal">Issue Book</button>
+              </div>
+            </div>
+          </div>
+            <div class="col-lg-3 mx-auto">
+            <div class="card" >
+              <img class="card-img-top img-fluid" src="{{ url_for('static', filename='img/returnbook.jpeg') }}" height="200">
+              <div class="card-block">
+               <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#returnBookModal">Return</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+{% block content %}
+	{% if datas.count() > 0%}
+	<table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col" class="table-id">Book Title</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Date of Issue</th>
+                    <th scope="col">Date of Expected Return</th>
+                    <th scope="col">Date of Return</th>
+                    <th scope="col">Fine</th>
+                    <th scope="col">Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+            	{% for data in datas %}
+                {% include 'transactions/update_return_modal.html' %}
+                
+                    <tr>
+                        <th scope="row" class="table-id"> 
+                        {{ data.booktitle }}</th>
+                        <td class="content">{{ data.membername }}</td>
+                        <td class="content">{{ data.IssueDate  }}</td>
+                        <td class="content">{{ data.ExpRetDate }}</td>
+                        <td class="content">{{ data.ActRetDate }}</td>
+                        <td class="content">{{ data.OverdueDays }}</td>
+
+                        <td class="action">
+                        <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#updateReturnModal-{{data.transID}}">Update</button>
+                    </td>
+                    </tr>                 
+
+           
+            </tbody>
+            {% endfor %}
+        </table>
+
+        {% else %}
+        <div class="text-center empty-text jinjo">No item found</div>
+        {% endif %}
+
+        {% endblock %}
+  
+    
+
+
+{% endblock %}

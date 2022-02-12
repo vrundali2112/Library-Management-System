@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="./searchmem" method="POST">
+
+    <div class="input-group">
+        <div class="class=col-sm-6 operationsearch">
+    <input type="search" class="form-control rounded" name="q" placeholder="Search Username..." aria-label="Search"
+        aria-describedby="search-addon" />
+    </div>
+</div>
+</form>
+   
+        {% include 'members/add_member_modal.html' %}
+        {% include 'transactions/return_book_modal.html' %}
+
+        <button type="button" class="btn btn-outline-light memberop" data-bs-toggle="modal" data-bs-target="#memberModal">Add New Member</button>
+
+        <div class="jinjo">
+
+        {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+
+        {% endif %}
+
+        {% endwith %}
+    </div>
+
+    <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col" class="table-id">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Phone-Number</th>
+                    <th scope="col">Total Paid</th>
+                    <th scope="col">Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in members %}
+                    {% include 'members/delete_member_modal.html' %} 
+                    {% include 'members/update_member_modal.html' %}                    
+                    <tr>
+                        <th scope="row" class="table-id"> 
+                        {{ member.mid }}</th>
+                        <td class="content">{{ member.name }}</td>
+                        <td class="content">{{ member.member_name }}</td>
+                        <td class="content">{{ member.phone_num }}</td>
+                        <td class="content">{{ member.total_paid }}</td>
+                        <td class="action">
+                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#deleteModalMember-{{member.mid}}">Delete</button> 
+
+                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#updateMemberModal-{{member.mid}}">
+                                Update
+                            </button>
+                          
+                            
+                        </td>
+                    </tr>
+           
+            </tbody>
+            {% endfor %}
+        </table>
+  
+    
+
+
+{% endblock %}

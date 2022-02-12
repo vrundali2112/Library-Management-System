@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+    <form class="row g-3 operation operation1" action="/display_members" method="post">
+      <div class="col-sm-10">
+        <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="uType" id="inlineRadio1" value="B" checked>
+            <label class="form-check-label" for="inlineRadio1">Search by Title</label>
+        </div>
+        <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="uType" id="inlineRadio2" value="U">
+            <label class="form-check-label" for="inlineRadio2">Search by Username</label>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <label for="KeyWord" class="form-label">Enter your search words</label>
+        <input type="text" class="form-control" name="KeyWord">
+      </div>
+      <div class="row align-items-center">
+        <div class="col">
+          <button class="btn" style="height:40px; background-color:white; width:100px; border-radius: 10px 10px 10px 10px;">Search</button></a>
+        </div>
+        
+
+     </div></form>
+	<table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col" class="table-id">Book Title</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Date of Issue</th>
+                    <th scope="col">Date of Expected Return</th>
+                    <th scope="col">Date of Return</th>
+                    <th scope="col">Fine</th>
+                    <th scope="col">Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+            	{% for data in datas %}
+                {% include 'transactions/update_return_modal.html' %}
+                
+                    <tr>
+                        <th scope="row" class="table-id"> 
+                        {{ data.booktitle }}</th>
+                        <td class="content">{{ data.membername }}</td>
+                        <td class="content">{{ data.IssueDate  }}</td>
+                        <td class="content">{{ data.ExpRetDate }}</td>
+                        <td class="content">{{ data.ActRetDate }}</td>
+                        <td class="content">{{ data.OverdueDays }}</td>
+
+                        <td class="action">
+                        <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#updateReturnModal-{{data.transID}}">Update</button>
+                         
+
+                    </td>
+                    </tr>                 
+
+           
+            </tbody>
+            {% endfor %}
+        </table>
+  
+    
+
+
+{% endblock %}

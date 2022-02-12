@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block body %}
+    
+    {% block content %}
+    
+    {% if books.count() > 0%}
+
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col" class="table-id">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Operation</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for book in books %}
+                {% include 'books/update_book_modal.html' %}
+                {% include 'books/delete_book_modal.html' %}
+                    <tr>
+                        <th scope="row" class="table-id">{{ book.id }}</th>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.isbn }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.stock }}</td>
+                        <td>{{book.member_count }}</td>
+                        <td class="action">
+                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#deleteModal-{{book.id}}">Delete</button> 
+
+                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#updateBookModal-{{book.id}}">
+                                Update
+                            </button>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+       
+        {% else %}
+        <div class="text-center empty-text jinjo">No item found</div>
+        {% endif %}
+{% endblock %}
+    
+
+
+{% endblock %}

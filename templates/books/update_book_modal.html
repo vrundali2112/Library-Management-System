@@ -1,0 +1,34 @@
+<div class="modal fade" id="updateBookModal-{{book.id}}" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update book</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url_for('update')}}" method="POST">
+                	<div class="form-group">
+                		<label>Title:</label>
+                		<input type="hidden"  name="id" value="{{book.id}}">
+                		<input type="text" class="form-control" name="title" value="{{book.title}}" required="1">
+                	</div>
+                	<div class="form-group">
+                		<label>Isbn:</label>
+                		<input type="text" value="{{book.isbn}}" class="form-control" name="isbn" required="1">
+                	</div>
+                	<div class="form-group">
+                		<label>Author:</label>
+                		<input type="text" value="{{book.author}}" class="form-control" name="author" required="1">
+                	</div>
+                	<div class="form-group">
+                		<label>Stock:</label>
+                		<input type="text" value="{{book.stock}}" class="form-control" name="stock" required="1">
+                	</div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline-dark">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
